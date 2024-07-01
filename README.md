@@ -41,3 +41,6 @@ Xに投稿されたレビューからサービスを知り利用していただ�
 # 機能の実装方針予定
 - OpenAI API
   - コストが心配なため入出力のトークン数に制限をかける予定です。
+
+# 画面遷移図
+https://www.figma.com/design/KL7dKJL0i8qj6losS4UGWC/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0-1&t=YpJcD5Fno6ht6TDQ-1
