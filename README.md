@@ -46,4 +46,4 @@ Xに投稿されたレビューからサービスを知り利用していただ�
 https://www.figma.com/design/KL7dKJL0i8qj6losS4UGWC/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0-1&t=YpJcD5Fno6ht6TDQ-1
 
 # ER図
-https://gyazo.com/586edf71dca544429bb06ce8b8862b6f
+[![Image from Gyazo](https://i.gyazo.com/90212570062df92fa120e59e3d6f4e02.jpg)](https://gyazo.com/90212570062df92fa120e59e3d6f4e02)
