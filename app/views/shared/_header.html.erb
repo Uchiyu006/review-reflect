@@ -22,7 +22,7 @@
           <li><%= link_to 'レビューをつくる', '#' %></li>
           <li><%= link_to 'レビューをみる', '#' %></li>
           <li><%= link_to 'ユーザー設定', '#' %></li>
-          <li><%= link_to 'ログアウト', '#' %></li>
+          <li><%= link_to 'ログアウト', logout_path, method: :delete, data: { turbo_method: :delete } %></li>
         </ul>
       </div>
     </div>

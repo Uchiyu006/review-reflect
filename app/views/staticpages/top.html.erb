@@ -47,7 +47,11 @@
     <div class="max-w-md flex flex-col mx-auto text-center">
         <h1 class="mb-5 text-5xl font-bold">Review Refrect</h1>
         <p class="mb-5">感情を言葉にしよう</p>
-        <button class="btn btn-primary">ログイン</button>
-        <button class="btn btn-link">新規登録</button>
+        <button class="btn btn-primary">
+            <%= link_to 'ログイン', login_path %>
+        </button>
+        <button class="btn btn-link">
+            <%= link_to '新規登録', new_user_path %>
+        </button>
     </div>
 </div>
