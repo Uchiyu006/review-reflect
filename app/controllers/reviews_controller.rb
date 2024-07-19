@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
   def index
-    @reviews = Review.includes(:user)
+    @reviews = current_user.reviews
   end
 end
