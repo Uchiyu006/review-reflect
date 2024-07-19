@@ -1,0 +1,10 @@
+<div class="card bg-base-100 w-96 shadow-xl mb-4 mx-auto">
+  <%= link_to "#" do %>
+    <div class="card-body">
+      <p><%= l review.created_at, format: :short %></p>  
+      <h2 class="card-title"><%= review.title %></h2>
+      <p><%= review.summary.slice(0,20) %></p>
+    </div>
+  <% end %>
+</div>
+
