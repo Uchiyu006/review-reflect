@@ -3,7 +3,7 @@ class ConversationsController < ApplicationController
     user_input = params[:user_input]
 
     if user_input.present? 
-      review = create_review_with_conversation(user_input)
+      review = find_or_create_review_with_conversation(user_input)
       
       generated_text = get_openai_response(user_input)   
       review.conversations.create(content: generated_text, role: "assistant")
@@ -12,9 +12,16 @@ class ConversationsController < ApplicationController
     end
   end
 
-  def create_review_with_conversation(user_input)
-    title = user_input.slice(0,15)
-    review = Review.create(title: title, summary: "None yet.", user_id: current_user.id)
+  def find_or_create_review_with_conversation(user_input)
+    if session[:review_id]
+      review = Review.find_by(id: session[:review_id], user_id: current_user.id)
+    end
+
+    unless review
+      title = user_input.slice(0,15)
+      review = Review.create(title: title, summary: "None yet.", user_id: current_user.id)
+      session[:review_id] = review.id if review.persisted?
+    end
 
     if review.persisted?
       review.conversations.create(content: user_input, role: "user")

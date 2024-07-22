@@ -3,5 +3,7 @@ class ReviewsController < ApplicationController
     @reviews = current_user.reviews
   end
 
-  def new; end
+  def new
+    session[:review_id] = nil
+  end
 end
