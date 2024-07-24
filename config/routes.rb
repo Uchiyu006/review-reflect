@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'staticpages#top'
   resources :users, only: %i[new create]
-  resources :reviews, only: %i[index new create]
+  resources :reviews
   resources :conversations do
     collection do
       get 'query'
