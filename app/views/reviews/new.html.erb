@@ -1,9 +1,12 @@
-<!-- 入力フォーム -->
 <div class="flex flex-col items-center justify-center py-6 w-full h-full">
+  <div id="review_form" class="max-w-4xl w-full space-y-1 h-full hidden">
+    <%= render 'form', review: @review %>
+  </div>
   <div class="max-w-4xl w-full space-y-8 h-full">
     <div id="conversation" class="space-y-4 p-4 rounded overflow-y-auto">
     </div>
-    <form id="text_form" class="flex items-center px-2 py-1 border-t border-gray-200 bg-white">
+    <button id="button_create_review" class="btn btn-sm" onclick="ShowReviewForm()">レビューをまとめる</button>
+    <form id="text_form" class="flex items-center px-2 border-t border-gray-200 bg-white">
       <input type="text" placeholder="入力してください" id="user_input" class="flex-1 px-3 py-2 border rounded border-gray-300 focus:border-blue-500 focus:outline-none focus:ring">
       <button id="button_post" class="px-4 py-2 bg-green-500 text-white rounded-md transition duration-300 ease-in-out hover:bg-green-600 focus:outline-none focus:ring focus:ring-green-200 ml-2">
         送信
@@ -13,6 +16,7 @@
 </div>
 
 <script>
+  // AI対話
   const button_post = document.getElementById('button_post');
   button_post.addEventListener('click', function(event){
     event.preventDefault();
@@ -23,7 +27,7 @@
     }
 
     const url = "<%= query_conversations_path('json') %>?user_input=" + formText.value;
-
+    console.log(url)
     const postOptions = {
       headers: {
         'Accept': 'application/json',
@@ -60,4 +64,15 @@
       })
       .catch(error => console.error('Error:', error));
   });
+
+  // レビューをまとめるボタン押下時の表示変更
+  function ShowReviewForm(){
+    const button_create_review = document.getElementById('button_create_review');
+    const review_form = document.getElementById('review_form');
+    const text_form = document.getElementById('text_form');
+    
+    button_create_review.classList.add('hidden')
+    review_form.classList.remove('hidden')
+    text_form.classList.add('hidden')
+  }
 </script>
