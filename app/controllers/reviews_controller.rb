@@ -4,8 +4,8 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    session[:review_id] = nil
     @review = Review.new
+    session[:review_id] = nil
   end
 
   def create

@@ -2,11 +2,14 @@ class Review < ApplicationRecord
   belongs_to :user
   has_many :conversations, dependent: :destroy
 
-  def self.find_or_create_review_with_conversation(user_input, user_id, session)
-    review = find_or_create_by(id: session[:review_id], user_id: user_id) do |new_review|
-      new_review.title = user_input.slice(0, 15)
-      new_review.summary = "None yet."
-      new_review.user_id = user_id
+  def self.find_or_create_review_with_conversation(user_input, user_id, review_id)
+    if review_id
+      review = find_by(id: review_id, user_id: user_id)
+    end
+
+    unless review
+      title = user_input.slice(0,15)
+      review = create(title: title, summary: "None yet.", user_id: user_id)
     end
 
     if review.persisted?
