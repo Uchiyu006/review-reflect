@@ -1,1 +1,8 @@
-show
+<div class="card bg-base-100 w-96 shadow-xl mb-4 mx-auto">
+  <div class="card-body">
+    <p><%= l @review.created_at, format: :short %></p>  
+    <h2 class="card-title"><%= @review.title %></h2>
+    <p><%= @review.summary %></p>
+  </div>
+</div>
+<%= render partial: 'conversations/conversation', collection: @conversations %>
