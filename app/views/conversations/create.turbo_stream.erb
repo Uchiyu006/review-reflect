@@ -1,0 +1,11 @@
+<%= turbo_stream.append "review_messages" do %>
+  <%= render partial: "conversation", locals: { conversation: @user_conversation, scroll_to: true }  %>
+<% end %>
+
+<%= turbo_stream.append "review_messages" do %>
+  <%= render partial: "conversation", locals: { conversation: @assistant_conversation, scroll_to: true } %>
+<% end %>
+
+<%= turbo_stream.replace "review_message_form" do %>
+  <%= render "form", review: @review %>
+<% end %>

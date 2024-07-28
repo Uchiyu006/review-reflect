@@ -1,0 +1,10 @@
+<%= turbo_frame_tag "review_message_form" do %>
+  <%= form_with model: Conversation.new, url: conversations_path do |f| %>
+    <div class="my-5">
+      <%= f.text_area :content, class: "flex-1 px-3 py-2 border rounded border-gray-300 focus:border-blue-500 focus:outline-none focus:ring" %>
+    </div>
+    <div class="grid justify-items-end">
+      <%= f.submit "送信", class: "btn mb-4" %>
+    </div>
+  <% end %>
+<% end %>
