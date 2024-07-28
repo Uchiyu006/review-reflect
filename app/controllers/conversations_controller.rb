@@ -1,20 +1,28 @@
 class ConversationsController < ApplicationController
-  def query
-    user_input = params[:user_input]
+  def new
+    @conversation = Conversation.new
+    @review = Review.new
+    session[:review_id] = nil
+  end
 
-    if user_input.present?
-      review = Review.find_or_create_review_with_conversation(user_input, current_user.id, session[:review_id])
-      session[:review_id] = review.id
-      response_text = AiResponseService.new(review).call
+  def create
+    user_input = conversation_params[:content]
 
-      if response_text
-        review.conversations.create(content: response_text, role: "assistant")
-      else
-        Rails.logger.error("Failed to get response from OpenAI API")
-        response_text = "Error: Unable to get response"
-      end
-      
-      render json:{text: response_text}
+    @review = Review.find_or_create_review(user_input, current_user.id, session[:review_id])
+    session[:review_id] = @review.id
+
+    @user_conversation = @review.conversations.create(content: user_input, role: "user") 
+    response_text = AiResponseService.new(@review).call
+    @assistant_conversation = @review.conversations.create(content: response_text, role: "assistant") 
+
+    respond_to do |format|
+      format.turbo_stream
     end
+  end
+
+  private
+
+  def conversation_params
+    params.require(:conversation).permit(:content)
   end
 end

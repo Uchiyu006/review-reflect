@@ -1,7 +1,9 @@
-<%= form_with model: @review do |f| %>
-  <%= f.number_field :character_count, class: "grow input input-bordered flex items-center w-full", placeholder: "文字数" %>
-  <%= f.text_field :title, class: "grow input input-bordered flex items-center w-full", placeholder: "タイトル" %>  
-  <%= f.text_area :summary, class: "grow textarea textarea-bordered flex items-center w-full" %>  
-  <%= f.submit "保存", class: "btn mb-4" %>
-  <button class="btn ai_summary">AIにまとめてもらう</button>
-<% end %>
+<div id="review_form" class="max-w-4xl w-full space-y-1 h-full">
+  <%= form_with model: @review, data: { turbo: false } do |f| %>
+    <%= f.number_field :character_count, class: "grow input input-bordered flex items-center w-full", placeholder: "文字数" %>
+    <%= f.text_field :title, class: "grow input input-bordered flex items-center w-full", placeholder: "タイトル" %>  
+    <%= f.text_area :summary, class: "grow textarea textarea-bordered flex items-center w-full" %>  
+    <%= f.submit "保存", class: "btn mb-4" %>
+    <button id="ai_summary" class="btn mb-4">AIにまとめてもらう</button>
+  <% end %>
+</div>

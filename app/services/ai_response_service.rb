@@ -1,29 +1,23 @@
 class AiResponseService
   def initialize(review)
-    Rails.logger.error("initialize")
     @review = review
   end
 
   def call
-    Rails.logger.error("call")
     generate_ai_response
   end
 
   private
 
   def generate_ai_response
-    Rails.logger.error("generate_ai_response")
-    messages = @review.conversations.order(:created_at).map do |conversation|
-      {
-        role: conversation.role,
-        content: conversation.content
-      }
-    end
+    messages = get_messages(@review)
+
+    Rails.logger.error("messages: #{messages}")
 
     client = OpenAI::Client.new
     response = client.chat(
       parameters: {
-        model: "gpt-3.5-turbo",
+        model: "gpt-4o-mini",
         messages: [
           { role: "system", content: "ユーザーのメッセージに対して深掘りする質問をしてください" },
         ] + messages,
@@ -36,5 +30,14 @@ class AiResponseService
   rescue => e
     Rails.logger.error("OpenAI API request failed: #{e.message}")
     "Error: Unable to get response"
+  end
+
+  def get_messages(review)
+    review.conversations.order(:created_at).map do |conversation|
+      {
+        role: conversation.role,
+        content: conversation.content
+      }
+    end
   end
 end
