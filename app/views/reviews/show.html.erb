@@ -5,4 +5,6 @@
     <p><%= @review.summary %></p>
   </div>
 </div>
-<%= render partial: 'conversations/conversation', collection: @conversations %>
+<div class="w-96 mx-auto">
+  <%= render partial: 'conversations/conversation', collection: @conversations %>
+</div>
