@@ -30,6 +30,7 @@ class ReviewsController < ApplicationController
   end
 
   def summarize_review
+    @conversations = @review.conversations
     character_count = review_params[:character_count]
     prompt = "今までのやりとりからレビューを#{character_count}文字以内でまとめてください。"
     response_text = AiResponseService.new(@review, prompt).call
