@@ -1,5 +1,5 @@
 <%= turbo_frame_tag "summary-button" do %>
   <% if review.id %>
-    <%= link_to "AIにまとめてもらう", edit_review_path(review), class: 'btn btn-sm', data: { turbo: false } %>
+    <%= link_to "レビューをまとめる", edit_review_path(review), class: 'btn btn-sm', data: { turbo: false } %>
   <% end %>
 <% end %>
