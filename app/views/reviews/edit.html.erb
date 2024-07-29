@@ -1,0 +1,6 @@
+<%= turbo_frame_tag "edit-review" do %>
+  <div id="edit-review" class="w-96 mx-auto">
+    <%= render 'form', review: @review %>
+    <%= render partial: 'conversations/conversation', collection: @conversations %>
+  </div>
+<% end %>

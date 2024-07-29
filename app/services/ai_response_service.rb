@@ -1,6 +1,7 @@
 class AiResponseService
-  def initialize(review)
+  def initialize(review, prompt)
     @review = review
+    @prompt = prompt
   end
 
   def call
@@ -19,7 +20,7 @@ class AiResponseService
       parameters: {
         model: "gpt-4o-mini",
         messages: [
-          { role: "system", content: "ユーザーのメッセージに対して深掘りする質問をしてください" },
+          { role: "system", content: @prompt },
         ] + messages,
         temperature: 0.7,
         max_tokens: 1000,
