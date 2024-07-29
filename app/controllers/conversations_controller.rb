@@ -11,8 +11,9 @@ class ConversationsController < ApplicationController
     @review = Review.find_or_create_review(user_input, current_user.id, session[:review_id])
     session[:review_id] = @review.id
 
+    prompt = "ユーザーのメッセージに対して深掘りする質問をしてください"
     @user_conversation = @review.conversations.create(content: user_input, role: "user") 
-    response_text = AiResponseService.new(@review).call
+    response_text = AiResponseService.new(@review, prompt).call
     @assistant_conversation = @review.conversations.create(content: response_text, role: "assistant") 
 
     respond_to do |format|
