@@ -1,7 +1,7 @@
 # fly.toml app configuration file generated for review-reflect on 2024-07-04T21:28:03+09:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
-#
+#    path = '/up' checks.statusから抜いた
 
 app = 'review-reflect'
 primary_region = 'nrt'
@@ -28,7 +28,6 @@ console_command = '/rails/bin/rails console'
     timeout = '2s'
     grace_period = '5s'
     method = 'GET'
-    path = '/up'
     protocol = 'http'
     tls_skip_verify = false
 
