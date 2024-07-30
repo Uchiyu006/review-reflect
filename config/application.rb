@@ -31,7 +31,5 @@ module Myapp
       g.helper false
       g.test_framework nil
     end
-
-    config.active_job.queue_adapter = :sidekiq
   end
 end
