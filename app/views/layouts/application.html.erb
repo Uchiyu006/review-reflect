@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Review Reflect</title>
+    <title>Review Reflect | <%= page_title(yield(:title)) %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,13 +11,15 @@
   </head>
 
   <body>
-    <% if logged_in? %>
-      <%= render 'shared/header' %>
-    <% else %>
-      <%= render 'shared/before_login_header' %>
-    <% end %>
-    <%= render 'layouts/flash_messages' %>
-    <%= yield %>
-    <%= render 'shared/footer' %>
+    <div class="wrapper min-h-screen pb-60 relative box-border">
+      <% if logged_in? %>
+        <%= render 'shared/header' %>
+      <% else %>
+        <%= render 'shared/before_login_header' %>
+      <% end %>
+      <%= render 'layouts/flash_messages' %>
+      <%= yield %>
+      <%= render 'shared/footer' %>
+    </div>
   </body>
 </html>

@@ -6,4 +6,10 @@ module ApplicationHelper
       else "gray"
     end
   end
+
+  def page_title(title = '')
+    if title.present?
+      "#{title}"
+    end
+  end
 end

@@ -1,6 +1,6 @@
 <header>
-  <div class="navbar bg-base-100">
-    <div class="navbar-start">
+  <div class="flex items-center justify-between h-12 px-4 bg-base-200">
+    <%= link_to :back, class: "flex-shrink-0" do %>
       <svg 
         xmlns="http://www.w3.org/2000/svg"
         class="h-5 w-5"
@@ -12,9 +12,10 @@
           strokeLinejoin="round"
           d="M15.75 19.5 8.25 12l7.5-7.5" />
       </svg>
+    <% end %>
+    <div class="flex-grow text-center text-xl font-medium">
+      <%= page_title(yield(:title)) %>
     </div>
-    <div class="navbar-center">
-      <a class="btn btn-ghost text-xl mx-auto">ログイン前</a>
-    </div>
+    <div class="flex-shrink-0 w-8 h-8"></div>
   </div>
 </header>
