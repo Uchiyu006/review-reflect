@@ -1,9 +1,27 @@
 module ApplicationHelper
   def flash_color(type)
     case type.to_sym
-      when :success then "blue"
-      when :danger  then "red"
-      else "gray"
+    when :success 
+      {
+        "bg": "bg-blue-100",
+        "border": "border-blue-400",
+        "text700": "text-blue-700",
+        "text500": "text-blue-500"
+      }
+    when :danger
+      {
+        "bg": "bg-red-100",
+        "border": "border-red-400",
+        "text700": "text-red-700",
+        "text500": "text-red-500"
+      }
+    else
+      {
+        "bg": "bg-gray-100",
+        "border": "border-gray-400",
+        "text700": "text-gray-700",
+        "text500": "text-gray-500"
+      }
     end
   end
 
