@@ -8,8 +8,8 @@ class Review < ApplicationRecord
     end
 
     unless review
-      title = user_input.slice(0,15)
-      review = create(title: title, summary: "None yet.", user_id: user_id)
+      title = user_input.slice(0,40)
+      review = create(title: title, user_id: user_id)
     end
 
     review
