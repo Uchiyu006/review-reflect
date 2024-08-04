@@ -1,9 +1,20 @@
 <div id="review_form" class="max-w-4xl w-full space-y-1 h-full">
   <%= form_with model: @review, url: review_path(@review), data: { turbo: false } do |f| %>
-    <%= f.number_field :character_count, class: "grow input input-bordered flex items-center w-full", placeholder: "文字数" %>
-    <%= f.text_field :title, class: "grow input input-bordered flex items-center w-full", placeholder: "タイトル" %>  
-    <%= f.text_area :summary, class: "grow textarea textarea-bordered flex items-center w-full" %>  
-    <%= f.submit "保存", class: "btn mb-4", name: "commit" %>
-    <%= f.submit "AIにまとめてもらう", class: "btn mb-4", name: "summarize" %>
-  <% end %>
+    <div class="mb-4">
+      <%= f.label "上限文字数" %>
+      <%= f.number_field :character_count, class: "grow input input-bordered flex items-center w-full" %>
+    </div>
+    <div class="mb-4">
+      <%= f.label "タイトル" %>
+      <%= f.text_field :title, class: "grow input input-bordered flex items-center w-full" %>  
+    </div>
+    <div class="mb-4">
+      <%= f.label "レビュー" %>
+      <%= f.text_area :summary, class: "grow textarea textarea-bordered flex items-center w-full" %>  
+    </div>
+    <div class="gap-4 flex justify-center">
+      <%= f.submit "AIにまとめてもらう", class: "btn", name: "summarize" %>
+      <%= f.submit "保存", class: "btn", name: "commit" %>
+    </div>
+    <% end %>
 </div>

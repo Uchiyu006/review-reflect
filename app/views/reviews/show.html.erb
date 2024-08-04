@@ -1,11 +1,13 @@
 <% content_for(:title, @review.title) %>
-<div class="card bg-base-100 w-96 shadow-xl mb-4 mx-auto">
-  <div class="card-body">
-    <p><%= l @review.created_at, format: :short %></p>  
-    <h2 class="card-title"><%= @review.title %></h2>
-    <p><%= @review.summary %></p>
+<div class="container mx-auto px-8 pt-8 pb-60 flex flex-col items-center w-full max-w-md">
+  <div class="card bg-base-100 w-96 shadow-xl mb-4">
+    <div class="card-body">
+      <p><%= l @review.created_at, format: :short %></p>  
+      <h2 class="card-title"><%= @review.title %></h2>
+      <p><%= @review.summary %></p>
+    </div>
   </div>
-</div>
-<div class="w-96 mx-auto">
-  <%= render partial: 'conversations/conversation', collection: @conversations %>
+  <div class="w-96 mx-auto">
+    <%= render partial: 'conversations/conversation', collection: @conversations %>
+  </div>
 </div>
