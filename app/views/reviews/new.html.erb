@@ -1,23 +1,25 @@
 <% content_for(:title, 'レビューをつくる') %>
-<%= turbo_frame_tag "edit-review" do %>
-  <div class="mx-auto w-full flex">
-    <div class="mx-auto">
-      <div class="bg-white py-8">
-        <div class="mx-auto max-w-lg px-6 ">
-          <%= turbo_frame_tag "review-form" %>
-          <ul role="list" class="overflow-y-auto max-h-[48vh] flex flex-col-reverse">
-            <%= turbo_stream_from "review_messages" %>
-            <div id="review_messages">
-              <%= render @review.conversations %>
-            </div>
-          </ul>
-          <%= render partial: "summary_button", locals: { review: @review } %>
-          <%= render partial: "conversations/form", locals: { review: @review } %>
-        </div>
+<div class="container mx-auto px-8 py-8 flex flex-col items-center w-full max-w-md">
+  <%= turbo_frame_tag "edit-review", class: "flex flex-col justify-between w-full h-full" do %>
+    <div class="flex-grow w-full bg-white flex flex-col justify-between">
+      <div class="max-w-lg">
+        <%= turbo_frame_tag "review-form" %>
+        <ul role="list" class="overflow-y-auto max-h-[48vh] flex flex-col-reverse">
+          <%= turbo_stream_from "review_messages" %>
+          <div id="review_messages">
+            <%= render @review.conversations %>
+          </div>
+        </ul>
+      </div>
+      <div class="summary-button flex justify-center w-full">
+        <%= render partial: "summary_button", locals: { review: @review } %>
+      </div>
+      <div class="chat-form">
+        <%= render partial: "conversations/form", locals: { review: @review } %>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
 <style>
     .footer {
         display: none;

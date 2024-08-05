@@ -1,7 +1,14 @@
 <% content_for(:title, 'レビュー編集') %>
-<%= turbo_frame_tag "edit-review" do %>
-  <div id="edit-review" class="w-96 mx-auto">
-    <%= render 'form', review: @review %>
-    <%= render partial: 'conversations/conversation', collection: @conversations %>
-  </div>
-<% end %>
+<div class="container mx-auto px-8 py-8 flex flex-col items-center w-full max-w-md">
+  <%= turbo_frame_tag "edit-review" do %>
+    <div id="edit-review" class="w-96 mx-auto">
+      <%= render 'form', review: @review %>
+      <%= render partial: 'conversations/conversation', collection: @conversations %>
+    </div>
+  <% end %>
+</div>
+<style>
+    .footer {
+        display: none;
+    }
+</style>

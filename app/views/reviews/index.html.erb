@@ -1,8 +1,10 @@
 <% content_for(:title, 'レビューをみる') %>
-<div>
-  <% if @reviews.present? %>
-    <%= render @reviews %>
-  <% else %>
-    <div class="text-center">レビューがありません</div>
-  <% end %>
+<div class="container mx-auto px-8 pt-8 pb-60 flex flex-col items-center w-full max-w-md">
+  <div>
+    <% if @reviews.present? %>
+      <%= render @reviews %>
+    <% else %>
+      <div class="text-center">レビューがありません</div>
+    <% end %>
+  </div>
 </div>
