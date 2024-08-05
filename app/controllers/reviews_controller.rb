@@ -17,7 +17,11 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    @review = current_user.reviews.find(session[:review_id])
+    if Review.find(params[:id])
+      @review = current_user.reviews.find(params[:id])
+    else
+      @review = current_user.reviews.find(session[:review_id])
+    end
     @conversations = @review.conversations
   end
 
@@ -47,13 +51,14 @@ class ReviewsController < ApplicationController
   end
 
   def save_review
+    @conversations = @review.conversations
     if @review.update(review_params)
       Rails.logger.debug("Review ID after update: #{@review.id}")
       redirect_to review_path(@review), success: "レビューをまとめました"
     else
       Rails.logger.debug("Review update failed")
       flash.now[:danger] = "レビューをまとめられませんでした"
-      render :new, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
     end
   end
 
