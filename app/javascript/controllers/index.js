@@ -4,11 +4,14 @@
 
 import { application } from "./application"
 
-import ReviewController from "./review_controller"
-application.register("review", ReviewController)
+import ConversationController from "./conversation_controller"
+application.register("conversation", ConversationController)
 
 import FlashController from "./flash_controller"
 application.register("flash", FlashController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import ReviewController from "./review_controller"
+application.register("review", ReviewController)

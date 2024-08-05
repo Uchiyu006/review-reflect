@@ -1,10 +1,10 @@
 <%= turbo_frame_tag "review_message_form" do %>
-  <%= form_with model: Conversation.new, url: conversations_path, class: "w-full" do |f| %>
+  <%= form_with model: Conversation.new, url: conversations_path, class: "w-full", data: { controller: 'conversation', action: 'input->conversation#check' } do |f| %>
     <div class="my-5 w-full">
-      <%= f.text_area :content, class: "w-full border rounded border-gray-300 focus:border-blue-500 focus:outline-none focus:ring" %>
+      <%= f.text_area :content, class: "w-full border rounded border-gray-300 focus:border-blue-500 focus:outline-none focus:ring", data: { conversation_target: 'field' } %>
     </div>
     <div class="grid justify-items-end">
-      <%= f.submit "送信", class: "btn mb-4" %>
+      <%= f.submit "送信", class: "btn mb-4", data: { conversation_target: 'submitButton' } %>
     </div>
   <% end %>
 <% end %>
