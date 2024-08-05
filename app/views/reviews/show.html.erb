@@ -4,7 +4,11 @@
     <div class="card-body">
       <p><%= l @review.created_at, format: :short %></p>  
       <h2 class="card-title"><%= @review.title %></h2>
-      <p><%= @review.summary %></p>
+      <% if @review.summary.present? %>
+        <p><%= @review.summary %></p>
+      <% else %>
+        <p>レビューがまとめられていません</p>
+      <% end %>
     </div>
   </div>
   <div class="w-96 mx-auto">

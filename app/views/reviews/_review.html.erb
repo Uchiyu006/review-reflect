@@ -3,7 +3,11 @@
     <div class="card-body">
       <p><%= l review.created_at, format: :short %></p>  
       <h2 class="card-title"><%= review.title %></h2>
-      <p><%= review.summary.slice(0,20) %></p>
+      <% if review.summary.present? %>
+        <p><%= review.summary.slice(0,20) %></p>
+      <% else %>
+        <p>レビューがまとめられていません</p>
+      <% end %>
     </div>
   <% end %>
 </div>
