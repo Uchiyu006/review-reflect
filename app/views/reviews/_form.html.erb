@@ -1,6 +1,9 @@
 <div id="review_form" class="max-w-4xl w-full space-y-1 h-full">
   <%= form_with model: @review, url: review_path(@review), data: { turbo: false, controller: 'review', review_character_count_value: 140 } do |f| %>
     <div class="mb-4">
+      <%= render 'shared/error_messages', object: f.object %>
+    </div>
+    <div class="mb-4">
       <%= f.label "上限文字数" %>
       <%= f.number_field :character_count, class: "grow input input-bordered flex items-center w-full", data: { review_target: "characterCount" } %>
     </div>
