@@ -47,3 +47,7 @@ https://www.figma.com/design/KL7dKJL0i8qj6losS4UGWC/%E7%94%BB%E9%9D%A2%E9%81%B7%
 
 # ER図
 [![Image from Gyazo](https://i.gyazo.com/90212570062df92fa120e59e3d6f4e02.jpg)](https://gyazo.com/90212570062df92fa120e59e3d6f4e02)
+
+実装時に変更
+reviewsテーブルのsummaryをnull許容に変更
+[![Image from Gyazo](https://i.gyazo.com/2f43966c1d1e379aac8068e0c686f63f.jpg)](https://gyazo.com/2f43966c1d1e379aac8068e0c686f63f)
